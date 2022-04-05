@@ -41,8 +41,14 @@ namespace WebApplication2
 
             services.AddControllers();
 
-            services.AddDbContext<WebApplication2Context>(options =>
-                   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<WebApplication2Context>();
+            services.AddDbContext<WebApplication2Context>(options => options.UseSqlServer(
+        "Data Source=SQL8001.site4now.net;Initial Catalog=db_a847f1_yelytv09;User Id=db_a847f1_yelytv09_admin;Password=Lizali03"
+        ));
+            services.AddTransient<UnitofWork>();
+            //new
+            //services.AddControllersWithViews(options => options.MaxModelValidationErrors = 50);
+            //services.AddMvc(options => options.MaxModelValidationErrors = 50);
 
             services.AddSwaggerGen(c =>
             {
